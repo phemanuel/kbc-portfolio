@@ -273,6 +273,23 @@ li {
                                                         @csrf
 														@method('PUT')
                                                         <div class="form-row">
+                                                        <div class="form-group col-md-12">
+                                                                    <label for="name1"><span class="style1">Category</span></label>
+                                                                    <select name="user_category"  class="form-control">
+                                                                    @if(auth()->user()->user_category)
+                                                                        <option value="" selected>{{auth()->user()->user_category}}</option>
+                                                                        <option value="Design and Creative">Design and Creative</option>
+                                                                        <option value="Design and Development">Design and Development</option>
+                                                                        <option value="Sales and Marketing">Sales and Marketing</option>
+                                                                        <option value="Business and Development">Business and Development</option>
+                                                                    @else
+                                                                        <option value="Design and Creative">Design and Creative</option>
+                                                                        <option value="Design and Development">Design and Development</option>
+                                                                        <option value="Sales and Marketing">Sales and Marketing</option>
+                                                                        <option value="Business and Development">Business and Development</option>
+                                                                        @endif
+                                                                    </select>
+                                                                </div>  
                                                                 <div class="form-group col-md-12">
                                                                     <label for="name1"><span class="style1">Full Name</span></label>
                                                                     <input type="text" class="form-control" name="full_name" value="{{auth()->user()->full_name}}" style="color: black;">

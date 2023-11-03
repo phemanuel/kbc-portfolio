@@ -159,11 +159,12 @@ class AuthController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'full_name' => 'required|string|max:255',
-                'user_name' => 'required|string|max:20|unique:users,user_name,' . $id,
-                'user_phone' => 'required|numeric|unique:users,user_phone,' . $id,
-                'country_code' => 'required|string',
-                'user_about' => 'required|string|max_words:150',
+                'full_name' => 'nullable|string|max:255',
+                'user_name' => 'nullable|string|max:20|unique:users,user_name,' . $id,
+                'user_phone' => 'nullable|numeric|unique:users,user_phone,' . $id,
+                'country_code' => 'nullable|string',
+                'user_category' => 'nullable|string',
+                'user_about' => 'nullable|string|max_words:150',
             ], [
                 'user_about.max_words' => 'The "About Yourself" field cannot exceed 150 words.',
             ]);
@@ -188,7 +189,8 @@ class AuthController extends Controller
             $user->country_code = $validatedData['country_code'];
             $user->user_name = $validatedData['user_name'];
             $user->user_about = $validatedData['user_about'];
-            $user->user_url = 'https://kingsconsult.com.ng/'.$uniqueUsername;
+            $user->user_category = $validatedData['user_category'];
+            $user->user_url = 'https://meetme.kingsconsult.com.ng/'.$uniqueUsername;
             $user->user_name_link =  $uniqueUsername;
         
             $user->save();

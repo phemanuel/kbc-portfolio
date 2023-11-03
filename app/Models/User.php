@@ -39,6 +39,7 @@ class User extends Authenticatable
         'remember_token',
         'user_roles',
         'login_attempts',
+        'user_category',
         
     ];    
 
